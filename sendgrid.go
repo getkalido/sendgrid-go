@@ -23,8 +23,8 @@ func GetRequest(key string, endpoint string, host string) rest.Request {
 	baseURL := host + endpoint
 	requestHeaders := map[string]string{
 		"Authorization": "Bearer " + key,
-		"User-Agent": "sendgrid/" + Version + ";go",
-		"Accept": "application/json",
+		"User-Agent":    "sendgrid/" + Version + ";go",
+		"Accept":        "application/json",
 	}
 	request := rest.Request{
 		BaseURL: baseURL,
@@ -51,5 +51,5 @@ var DefaultClient = rest.DefaultClient
 
 // API sets up the request to the SendGrid API, this is main interface.
 func API(request rest.Request) (*rest.Response, error) {
-	return DefaultClient.API(request)
+	return DefaultClient.Send(request)
 }
